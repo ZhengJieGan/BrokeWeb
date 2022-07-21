@@ -56,7 +56,10 @@ function App() {
         md={10}
         lg={6}
       >
-        <Box height={{"0%"}} width={{"0%"}}>
+        <Box
+          height={{ xs: "0%", sm: "0%", md: "0%", lg: "60%" }}
+          width={{ xs: "0%", sm: "0%", md: "0%", lg: "60%" }}
+        >
           <Background />
         </Box>
       </Grid>
