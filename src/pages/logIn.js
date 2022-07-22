@@ -16,21 +16,20 @@ import ColorContext from "../base/colorContext";
 
 const theme = createTheme();
 
-function SignUp() {
+function LogIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
-      confirmpassword: data.get("confirmpassword"),
     });
   };
 
   const color = useContext(ColorContext);
 
   return (
-    <AuthenticationLayout type="signup">
+    <AuthenticationLayout type="login">
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -46,13 +45,13 @@ function SignUp() {
               color={{ xs: "white", sm: "white", md: "white", lg: "black" }}
               gutterBottom
             >
-              Get started with Broke Now!
+              Welcome back to Broke!
             </Typography>
             <Typography
               variant="h6"
               color={{ xs: "white", sm: "white", md: "white", lg: "black" }}
             >
-              One step closer to become not so broke.
+              Keep tracking your expenses to find out that you are always broke.
             </Typography>
           </Box>
           <Box
@@ -68,7 +67,7 @@ function SignUp() {
               variant="h5"
               color={{ xs: "white", sm: "white", md: "white", lg: "black" }}
             >
-              Sign Up
+              Log In
             </Typography>
             <Box
               component="form"
@@ -95,16 +94,6 @@ function SignUp() {
                 id="password"
                 autoComplete="current-password"
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="confirmpassword"
-                label="Confirm Password"
-                type="password"
-                id="confirmpassword"
-                autoComplete="current-password"
-              />
 
               <motion.div
                 whileHover={{
@@ -128,16 +117,16 @@ function SignUp() {
                     },
                   }}
                 >
-                  Sign Up
+                  Log In
                 </Button>
               </motion.div>
             </Box>
           </Box>
-          <ButtonBase component={Link} to="/log-in">
+          <ButtonBase component={Link} to="/sign-up">
             <Typography
               color={{ xs: "white", sm: "white", md: "white", lg: "black" }}
             >
-              Already have an account? Log In Here!
+              Dont have an account? Sign Up Here!
             </Typography>
           </ButtonBase>
         </Container>
@@ -146,4 +135,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default LogIn;
