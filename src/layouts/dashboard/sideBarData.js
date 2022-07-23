@@ -4,11 +4,16 @@ const SideBarData = [
     link: "user/dashboard",
     key: 1,
   },
+  {
+    title: "Statistics",
+    link: "user/statistics",
+    key: 2,
+  },
 
   {
     title: "Profile",
     link: "user/profile",
-    key: 2,
+    key: 3,
   },
 ];
 

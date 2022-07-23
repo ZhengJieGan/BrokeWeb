@@ -26,7 +26,7 @@ export default function DropDown() {
           onChange={handleChange}
         >
           {menuItem.map((item) => {
-            return <MenuItem value={item}>{item}</MenuItem>;
+            return <MenuItem key={item} value={item}>{item}</MenuItem>;
           })}
         </Select>
       </FormControl>
