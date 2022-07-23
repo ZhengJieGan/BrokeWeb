@@ -50,9 +50,9 @@ function AddRecord() {
 					variant="h3"
 					fontSize={{
 						xs: "20px",
-						sm: "30px",
-						md: "30px",
-						lg: "30px",
+						sm: "20px",
+						md: "20px",
+						lg: "20px",
 					}}
 					gutterBottom
 				>

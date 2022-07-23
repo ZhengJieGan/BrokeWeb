@@ -7,7 +7,14 @@ function ListRecord() {
 	const color = useContext(ColorContext);
 
 	return (
-		<Grid item container justifyContent="center" lg={6}>
+		<Grid
+			item
+			container
+			justifyContent="center"
+			width="100%"
+			height="100%"
+			lg={6}
+		>
 			<Box
 				display="flex"
 				flexDirection="column"

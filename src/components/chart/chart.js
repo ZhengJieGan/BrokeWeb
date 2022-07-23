@@ -33,7 +33,15 @@ function Chart() {
 			}}
 		>
 			<Box width="80%">
-				<Typography variant="h5">
+				<Typography
+					variant="h3"
+					fontSize={{
+						xs: "20px",
+						sm: "20px",
+						md: "20px",
+						lg: "20px",
+					}}
+				>
 					This shows what category of items you spent the most.
 				</Typography>
 			</Box>
@@ -42,7 +50,9 @@ function Chart() {
 				<PieChart
 					data={dataMock}
 					label={({ dataEntry }) =>
-						`${dataEntry.title} = ${Math.round((dataEntry.value/45)*100)}%`
+						`${dataEntry.title} = ${Math.round(
+							(dataEntry.value / 45) * 100
+						)}%`
 					}
 					labelStyle={{
 						...defaultLabelStyle,

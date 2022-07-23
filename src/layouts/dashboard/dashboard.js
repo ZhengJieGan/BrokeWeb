@@ -177,17 +177,15 @@ function Dashboard(props) {
 					display="flex"
 					justifyContent="center"
 					alignItems="center"
-					height="100%"
+					height="100vh"
 				>
 					<Grid
-						container
+						item
 						display="flex"
-						flexDirection="row"
 						justifyContent="center"
 						alignItems="center"
 						width="100%"
 						height="100vh"
-						backgroundColor={color.background}
 						sx={{
 							pt: { xs: "10%", sm: "3%", md: "3%", lg: "3%" },
 						}}

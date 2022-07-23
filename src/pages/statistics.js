@@ -14,7 +14,10 @@ function Statistics() {
 				justifyContent="space-between"
 				alignItems="center"
 				lg={6}
-				sx={{ mt: { xs: "4%", sm: "4%", md: "2%", lg: "0%" } }}
+				sx={{
+					mt: { xs: "4%", sm: "4%", md: "2%", lg: "0%" },
+					height: "100%",
+				}}
 			>
 				<Chart />
 				<Summary />

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 import { Grid, Typography, Box } from "@mui/material";
 import ColorContext from "../../base/colorContext";
+import Background from "../../assets/tips.svg";
 
 function DailySpent() {
 	const color = useContext(ColorContext);
@@ -23,7 +25,7 @@ function DailySpent() {
 			<Box
 				display="flex"
 				flexDirection="column"
-				justifyContent="space-around"
+				justifyContent="flex-start"
 				alignItems="center"
 				textAlign="center"
 				sx={{
@@ -35,7 +37,56 @@ function DailySpent() {
 					height: { xs: "90%", sm: "80%", md: "80%", lg: "80%" },
 				}}
 			>
-				<Typography>test</Typography>
+				<Box
+					display="flex"
+					flexDirection="column"
+					justifyContent="space-around"
+					sx={{ height: "100%" }}
+				>
+					<Box
+						display="flex"
+						flexDirection="column"
+						justifyContent="center"
+						alignItems="center"
+					>
+						<Typography
+							variant="h3"
+							fontSize={{
+								xs: "15px",
+								sm: "15px",
+								md: "15px",
+								lg: "15px",
+							}}
+						>
+							The amount you have spent today :
+						</Typography>
+						<Typography
+							variant="h3"
+							component={motion.div}
+							whileHover={{
+								scale: 1.2,
+								transition: { duration: 0.1 },
+							}}
+							fontWeight="bold"
+							color={color.mainColor}
+							fontSize={{
+								xs: "25px",
+								sm: "45px",
+								md: "45px",
+								lg: "45px",
+							}}
+						>
+							RM 500
+						</Typography>
+					</Box>
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+					>
+						<img src={Background} height={250} alt="tips" />
+					</Box>
+				</Box>
 			</Box>
 		</Grid>
 	);
