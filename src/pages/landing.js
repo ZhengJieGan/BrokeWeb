@@ -56,7 +56,7 @@ function Landing() {
 
 	const descVariants = {
 		offscreen: {
-			y: 300,
+			y: 250,
 			opacity: 0,
 		},
 		onscreen: {
@@ -72,7 +72,7 @@ function Landing() {
 
 	const buttonVariants = {
 		offscreen: {
-			y: 300,
+			y: 180,
 			opacity: 0,
 		},
 		onscreen: {
@@ -131,7 +131,7 @@ function Landing() {
 						justifyContent="space-between"
 						textAlign="flex-start"
 						alignItems="flex-start"
-						height={{ xs: "60%", sm: "40%", md: "40%", lg: "30%" }}
+						height={{ xs: "55%", sm: "40%", md: "40%", lg: "30%" }}
 					>
 						<Typography
 							component={motion.h1}
