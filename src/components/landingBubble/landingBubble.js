@@ -6,6 +6,22 @@ import ColorContext from "../../base/colorContext";
 function LandingBubble(props) {
 	const color = useContext(ColorContext);
 
+	const variants = {
+		offscreen: {
+			y: 300,
+			opacity: 0,
+		},
+		onscreen: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				type: "spring",
+				bounce: 0.4,
+				duration: props.timing,
+			},
+		},
+	};
+
 	return (
 		<Grid
 			container
@@ -14,6 +30,10 @@ function LandingBubble(props) {
 				scale: 1.1,
 				transition: { duration: 0.1 },
 			}}
+			initial="offscreen"
+			whileInView="onscreen"
+			viewport={{ once: true, amount: 0.8 }}
+			variants={variants}
 			height="60%"
 			direction="column"
 			xs={12}

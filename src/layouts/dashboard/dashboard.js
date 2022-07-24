@@ -127,7 +127,10 @@ function Dashboard(props) {
 									display="flex"
 									justifyContent="space-between"
 									alignItems="center"
-									sx={{ width: { md: "50%", lg: "30%" } }}
+									sx={{
+										width: { md: "30%", lg: "30%" },
+										mr: { md: "15%", lg: "5%" },
+									}}
 								>
 									<motion.div
 										whileHover={{
