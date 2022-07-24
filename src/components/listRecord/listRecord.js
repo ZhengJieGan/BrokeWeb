@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Grid, Box } from "@mui/material";
 import ColorContext from "../../base/colorContext";
-import SingleRecord from "./singleRecord";
+import PaginationList from "./paginationList";
 
 function ListRecord() {
 	const color = useContext(ColorContext);
@@ -12,13 +12,13 @@ function ListRecord() {
 			container
 			justifyContent="center"
 			width="100%"
-			height="100%"
+			sx={{ height: { xs: "80%", sm: "80%", md: "100%", lg: "100%" } }}
 			lg={6}
 		>
 			<Box
 				display="flex"
 				flexDirection="column"
-				justifyContent="flex-start"
+				justifyContent="center"
 				alignItems="center"
 				sx={{
 					backgroundColor: color.white,
@@ -28,7 +28,7 @@ function ListRecord() {
 					height: "100%",
 				}}
 			>
-				{<SingleRecord />}
+				<PaginationList />
 			</Box>
 		</Grid>
 	);

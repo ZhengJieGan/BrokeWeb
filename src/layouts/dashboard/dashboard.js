@@ -11,10 +11,11 @@ import {
 	IconButton,
 	ButtonBase,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Outlet } from "react-router-dom";
 import ColorContext from "../../base/colorContext";
+import { motion } from "framer-motion";
 
 const drawerWidth = 250;
 
@@ -45,37 +46,44 @@ function useWindowDimensions() {
 
 function Dashboard(props) {
 	// const [title, setTitle] = useState("Broke");
-	// const location = useLocation();
-	// const { pathname: pathName } = location;
+	const location = useLocation();
+	const { pathname: pathName } = location;
 	const { width } = useWindowDimensions();
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
-
-	const color = useContext(ColorContext);
+	const [firstColor, setFirstColor] = useState("black");
+	const [secondColor, setSecondColor] = useState("black");
+	const [thirdColor, setThirdColor] = useState("black");
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
 
 	const container = window !== undefined ? () => window() : undefined;
+	const color = useContext(ColorContext);
 
-	// useEffect(() => {
-	// 	switch (pathName) {
-	// 		case "/user/dashboard":
-	// 			setTitle("Add Expenses");
-	// 			break;
-	// 		case "/user/statistics":
-	// 			setTitle("Statistics");
-	// 			break;
-	// 		case "/user/profile":
-	// 			setTitle("Profile");
-	// 			break;
+	useEffect(() => {
+		switch (pathName) {
+			case "/user/dashboard":
+				setFirstColor(color.mainColor);
+				setSecondColor("black");
+				setThirdColor("black");
+				break;
+			case "/user/statistics":
+				setSecondColor(color.mainColor);
+				setThirdColor("black");
+				setFirstColor("black");
+				break;
+			case "/user/profile":
+				setThirdColor(color.mainColor);
+				setSecondColor("black");
+				setFirstColor("black");
+				break;
 
-	// 		default:
-	// 			setTitle("Dashboard");
-	// 			break;
-	// 	}
-	// }, [pathName]);
+			default:
+				break;
+		}
+	}, [pathName, color.mainColor]);
 
 	return (
 		<Box display="flex" flexDirection="column" width="100%" height="100vh">
@@ -118,34 +126,65 @@ function Dashboard(props) {
 								<Box
 									display="flex"
 									justifyContent="space-between"
-									width="30%"
+									alignItems="center"
+									sx={{ width: { md: "50%", lg: "30%" } }}
 								>
-									<ButtonBase
-										component={Link}
-										to="/user/dashboard"
+									<motion.div
+										whileHover={{
+											scale: 1.1,
+											transition: { duration: 0.1 },
+										}}
 									>
-										<Typography variant="h6" color="black">
-											Add Expenses
-										</Typography>
-									</ButtonBase>
+										<ButtonBase
+											component={Link}
+											to="/user/dashboard"
+										>
+											<Typography
+												variant="body"
+												color={firstColor}
+											>
+												Add Expenses
+											</Typography>
+										</ButtonBase>
+									</motion.div>
 
-									<ButtonBase
-										component={Link}
-										to="/user/statistics"
+									<motion.div
+										whileHover={{
+											scale: 1.1,
+											transition: { duration: 0.1 },
+										}}
 									>
-										<Typography variant="h6" color="black">
-											Statistics
-										</Typography>
-									</ButtonBase>
+										<ButtonBase
+											component={Link}
+											to="/user/statistics"
+										>
+											<Typography
+												variant="body"
+												color={secondColor}
+											>
+												Statistics
+											</Typography>
+										</ButtonBase>
+									</motion.div>
 
-									<ButtonBase
-										component={Link}
-										to="/user/profile"
+									<motion.div
+										whileHover={{
+											scale: 1.1,
+											transition: { duration: 0.1 },
+										}}
 									>
-										<Typography variant="h6" color="black">
-											Profile
-										</Typography>
-									</ButtonBase>
+										<ButtonBase
+											component={Link}
+											to="/user/profile"
+										>
+											<Typography
+												variant="body"
+												color={thirdColor}
+											>
+												Profile
+											</Typography>
+										</ButtonBase>
+									</motion.div>
 								</Box>
 							) : null}
 						</Box>

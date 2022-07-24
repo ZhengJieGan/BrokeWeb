@@ -11,7 +11,12 @@ function Statistics() {
 			<Grid
 				container
 				direction="column"
-				justifyContent="space-between"
+				justifyContent={{
+					xs: "space-around",
+					sm: "space-around",
+					md: "space-around",
+					lg: "space-between",
+				}}
 				alignItems="center"
 				lg={6}
 				sx={{

@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import ColorContext from "../../base/colorContext";
 
 function Summary() {
 	const color = useContext(ColorContext);
+
+	const dataMock = [];
+
 	return (
 		<Box
 			display="flex"
@@ -18,7 +22,89 @@ function Summary() {
 				height: "38%",
 			}}
 		>
-			<Typography>test</Typography>
+			{dataMock.length > 0 ? (
+				<Box
+					width="100%"
+					height="100%"
+					display="flex"
+					flexDirection="column"
+					justifyContent="space-around"
+					alignItems="center"
+				>
+					<Box
+						display="flex"
+						flexDirection="column"
+						justifyContent="center"
+						alignItems="center"
+					>
+						<Typography variant="body">
+							Your total spending{" "}
+						</Typography>
+						<Typography
+							variant="body"
+							component={motion.div}
+							whileHover={{
+								scale: 1.2,
+								transition: { duration: 0.1 },
+							}}
+							fontWeight="bold"
+							color={color.mainColor}
+							fontSize={{
+								xs: "25px",
+								sm: "35px",
+								md: "35px",
+								lg: "35px",
+							}}
+						>
+							RM 500
+						</Typography>
+					</Box>
+
+					<Box
+						display="flex"
+						flexDirection="column"
+						justifyContent="center"
+						alignItems="center"
+					>
+						<Typography variant="body">
+							Most of your spendings are in{" "}
+						</Typography>
+						<Typography
+							variant="body"
+							component={motion.div}
+							whileHover={{
+								scale: 1.2,
+								transition: { duration: 0.1 },
+							}}
+							fontWeight="bold"
+							color={color.mainColor}
+							fontSize={{
+								xs: "25px",
+								sm: "35px",
+								md: "35px",
+								lg: "35px",
+							}}
+						>
+							Travel
+						</Typography>
+					</Box>
+				</Box>
+			) : (
+				<Box>
+					<Typography
+						variant="body"
+						fontWeight="bold"
+						fontSize={{
+							xs: "20px",
+							sm: "25px",
+							md: "25px",
+							lg: "25px",
+						}}
+					>
+						You have no data!
+					</Typography>
+				</Box>
+			)}
 		</Box>
 	);
 }

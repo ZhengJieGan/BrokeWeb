@@ -49,19 +49,11 @@ function DailySpent() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<Typography
-							variant="h3"
-							fontSize={{
-								xs: "15px",
-								sm: "15px",
-								md: "15px",
-								lg: "15px",
-							}}
-						>
-							The amount you have spent today :
+						<Typography variant="body">
+							The amount you have spent today
 						</Typography>
 						<Typography
-							variant="h3"
+							variant="body"
 							component={motion.div}
 							whileHover={{
 								scale: 1.2,
@@ -71,9 +63,9 @@ function DailySpent() {
 							color={color.mainColor}
 							fontSize={{
 								xs: "25px",
-								sm: "45px",
-								md: "45px",
-								lg: "45px",
+								sm: "35px",
+								md: "35px",
+								lg: "35px",
 							}}
 						>
 							RM 500
@@ -81,7 +73,8 @@ function DailySpent() {
 					</Box>
 					<Box
 						display="flex"
-						justifyContent="center"
+						flexDirection="row"
+						justifyContent="space-around"
 						alignItems="center"
 					>
 						<img src={Background} height={250} alt="tips" />

@@ -47,7 +47,7 @@ function LandingBubble(props) {
 				alignItems="center"
 			>
 				<Typography
-					variant="h5"
+					variant="body"
 					fontWeight="bold"
 					gutterBottom
 					fontSize={{
@@ -60,7 +60,7 @@ function LandingBubble(props) {
 					{props.title}
 				</Typography>
 				<Typography
-					variant="h6"
+					variant="body"
 					textAlign="justify"
 					fontSize={{
 						xs: "15px",

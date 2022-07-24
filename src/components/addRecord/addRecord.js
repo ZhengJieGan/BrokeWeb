@@ -47,12 +47,13 @@ function AddRecord() {
 				}}
 			>
 				<Typography
-					variant="h3"
+					variant="body"
+					fontWeight="bold"
 					fontSize={{
 						xs: "20px",
-						sm: "20px",
-						md: "20px",
-						lg: "20px",
+						sm: "25px",
+						md: "25px",
+						lg: "35px",
 					}}
 					gutterBottom
 				>
