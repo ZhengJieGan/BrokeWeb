@@ -87,7 +87,7 @@ function Chart() {
 					alignItems="center"
 					textAlign="center"
 				>
-					<img src={ChartViz} alt="Viz" height={300} width={300} />
+					<img src={ChartViz} alt="Viz" height={250} width={250} />
 					<Typography
 						variant="body"
 						fontWeight="bold"
