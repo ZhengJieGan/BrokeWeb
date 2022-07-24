@@ -5,7 +5,78 @@ import SingleRecord from "./singleRecord";
 import ColorContext from "../../base/colorContext";
 import Empty from "../../assets/empty.svg";
 
-const data = [];
+const data = [
+	{
+		category: "food",
+		price: 50,
+		remarks: "test",
+		face: 1,
+		id: 1,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 3,
+		id: 2,
+	},
+	{
+		category: "play",
+		price: 50,
+		remarks: "test",
+		face: 5,
+		id: 3,
+	},
+	{
+		category: "beer",
+		price: 50,
+		remarks: "test",
+		face: 5,
+		id: 4,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 4,
+		id: 5,
+	},
+	{
+		category: "club",
+		price: 50,
+		remarks: "test",
+		face: 2,
+		id: 6,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 3,
+		id: 7,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 5,
+		id: 8,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 2,
+		id: 9,
+	},
+	{
+		category: "travel",
+		price: 50,
+		remarks: "test",
+		face: 1,
+		id: 10,
+	},
+];
 
 export default function PaginationList() {
 	let [page, setPage] = useState(1);
@@ -38,7 +109,7 @@ export default function PaginationList() {
 				justifyContent="center"
 				alignItems="center"
 			>
-				{_DATA.length > 0 ? (
+				{data.length > 0 ? (
 					_DATA.currentData().map((v) => {
 						return (
 							<SingleRecord
@@ -80,7 +151,7 @@ export default function PaginationList() {
 				justifyContent="center"
 				alignItems="center"
 			>
-				{_DATA.length > 0 ? (
+				{data.length > 0 ? (
 					<Pagination
 						count={count}
 						size="large"

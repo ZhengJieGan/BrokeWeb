@@ -7,8 +7,8 @@ import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 function SingleRecord(props) {
 	const [face, setFace] = useState(null);
@@ -68,7 +68,7 @@ function SingleRecord(props) {
 				transition: { duration: 0.1 },
 			}}
 			flexDirection="row"
-			justifyContent="space-between"
+			justifyContent="space-evenly"
 			alignItems="center"
 			sx={{
 				backgroundColor: color.background,
@@ -79,13 +79,13 @@ function SingleRecord(props) {
 				mb: "5%",
 			}}
 		>
+			{face}
 			<Box
 				display="flex"
 				flexDirection="column"
 				justifyContent="space-around"
 				alignItems="flex-start"
 				width="70%"
-				sx={{ pl: "5%" }}
 			>
 				<Typography
 					variant="body"
@@ -124,13 +124,13 @@ function SingleRecord(props) {
 
 			<Box
 				display="flex"
-				flexDirection="column"
-				justifyContent="center"
-				alignItems="center"
-				width="15%"
+				flexDirection="row"
+				justifyContent="flex-end"
+				alignItems="flex-end"
 				sx={{ borderRadius: "20px" }}
 			>
-				{face}
+				<EditIcon sx={{ color: color.mainColor }} />
+				<DeleteIcon sx={{ color: color.mainColor }} />
 			</Box>
 		</Box>
 	);
