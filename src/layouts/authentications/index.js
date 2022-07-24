@@ -1,12 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Grid, Box } from "@mui/material";
 import { ReactComponent as Login } from "../../assets/login.svg";
 import { ReactComponent as Signup } from "../../assets/signup.svg";
 import ColorContext from "../../base/colorContext";
 import { motion } from "framer-motion";
 
+function getWindowDimensions() {
+	const { innerWidth: width, innerHeight: height } = window;
+	return {
+		width,
+		height,
+	};
+}
+
+function useWindowDimensions() {
+	const [windowDimensions, setWindowDimensions] = useState(
+		getWindowDimensions()
+	);
+
+	useEffect(() => {
+		function handleResize() {
+			setWindowDimensions(getWindowDimensions());
+		}
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	return windowDimensions;
+}
+
 function AuthenticationLayout(props) {
 	const color = useContext(ColorContext);
+	const { width } = useWindowDimensions();
 
 	const svgVariants = {
 		offscreen: {
@@ -37,21 +63,38 @@ function AuthenticationLayout(props) {
 					background: `linear-gradient(to right bottom, ${color.mainColor}, ${color.secondaryColor})`,
 				}}
 			>
-				<Box
-					component={motion.div}
-					initial="offscreen"
-					whileInView="onscreen"
-					viewport={{ once: true, amount: 0.8 }}
-					variants={svgVariants}
-					display="flex"
-					justifyContent="center"
-					alignItems="center"
-					width="100%"
-					height="100%"
-					p="15%"
-				>
-					{props.type === "login" ? <Login /> : <Signup />}
-				</Box>
+				{width > 1200 ? (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						width="100%"
+						height="100%"
+						p="15%"
+					>
+						{props.type === "login" ? (
+							<Box
+								component={motion.div}
+								initial="offscreen"
+								whileInView="onscreen"
+								viewport={{ once: true, amount: 0.8 }}
+								variants={svgVariants}
+							>
+								<Login />
+							</Box>
+						) : (
+							<Box
+								component={motion.div}
+								initial="offscreen"
+								whileInView="onscreen"
+								viewport={{ once: true, amount: 0.8 }}
+								variants={svgVariants}
+							>
+								<Signup />
+							</Box>
+						)}
+					</Box>
+				) : null}
 			</Grid>
 			<Grid
 				item

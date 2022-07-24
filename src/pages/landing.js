@@ -131,7 +131,7 @@ function Landing() {
 						justifyContent="space-between"
 						textAlign="flex-start"
 						alignItems="flex-start"
-						height={{ xs: "40%", sm: "40%", md: "40%", lg: "30%" }}
+						height={{ xs: "60%", sm: "40%", md: "40%", lg: "30%" }}
 					>
 						<Typography
 							component={motion.h1}
