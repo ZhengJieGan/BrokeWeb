@@ -72,7 +72,7 @@ function Landing() {
 
   const buttonVariants = {
     offscreen: {
-      y: 180,
+      y: 150,
       opacity: 0,
     },
     onscreen: {
