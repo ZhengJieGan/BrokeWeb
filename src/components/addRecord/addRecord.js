@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Grid, Typography, Box, TextField, Button } from "@mui/material";
 import DropDown from "../dropDown/dropDown";
 import RadioGroupRating from "../rating/rating";
@@ -7,6 +7,18 @@ import { motion } from "framer-motion";
 
 function AddRecord() {
 	const color = useContext(ColorContext);
+	const [category, setCategory] = useState("");
+	const [rating, setRating] = useState("");
+
+	const categoryHandler = (feedback) => {
+		setCategory(feedback);
+	};
+
+	const ratingHandler = (feedback) => {
+		const cleanOne = feedback.replace(/:/g, "");
+		const cleanTwo = cleanOne.substr(1, cleanOne.length);
+		setRating(parseInt(cleanTwo));
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -14,8 +26,11 @@ function AddRecord() {
 		console.log({
 			price: data.get("price"),
 			remarks: data.get("remark"),
+			category: category,
+			happiness: rating,
 		});
 	};
+
 	return (
 		<Grid
 			sx={{
@@ -77,7 +92,7 @@ function AddRecord() {
 					>
 						How happy are you regarding the purchased you made?
 					</Typography>
-					<RadioGroupRating />
+					<RadioGroupRating ratingHandler={ratingHandler} />
 				</Box>
 				<Box
 					component="form"
@@ -99,7 +114,7 @@ function AddRecord() {
 					>
 						Select the category that you spent on.
 					</Typography>
-					<DropDown />
+					<DropDown categoryHandler={categoryHandler} />
 
 					<Typography
 						variant="body"
@@ -118,6 +133,7 @@ function AddRecord() {
 						id="price"
 						name="price"
 						type="number"
+						required
 					/>
 
 					<Typography
@@ -137,28 +153,29 @@ function AddRecord() {
 						id="remark"
 						name="remark"
 					/>
-
-					<Button
-						type="submit"
-						fullWidth
-						component={motion.div}
+					<motion.div
 						whileHover={{
 							scale: 1.05,
 							transition: { duration: 0.1 },
 						}}
-						variant="contained"
-						sx={{
-							mt: 3,
-							mb: 2,
-							borderRadius: "30px",
-							backgroundColor: color.buttonColor,
-							"&:hover": {
-								backgroundColor: color.buttonColor,
-							},
-						}}
 					>
-						Add New Record
-					</Button>
+						<Button
+							type="submit"
+							fullWidth
+							variant="contained"
+							sx={{
+								mt: 3,
+								mb: 2,
+								borderRadius: "30px",
+								backgroundColor: color.buttonColor,
+								"&:hover": {
+									backgroundColor: color.buttonColor,
+								},
+							}}
+						>
+							Add New Record
+						</Button>
+					</motion.div>
 				</Box>
 			</Box>
 		</Grid>

@@ -4,12 +4,25 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { ColorProvider } from "./base/colorContext";
+import { Provider } from "react-redux";
+import {
+	legacy_createStore as createStore,
+	applyMiddleware,
+	compose,
+} from "redux";
+import thunk from "redux-thunk";
+import reducers from "./reducers";
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <BrowserRouter>
-    <ColorProvider>
-      <App />
-    </ColorProvider>
-  </BrowserRouter>
+	<Provider store={store}>
+		<BrowserRouter>
+			<ColorProvider>
+				<App />
+			</ColorProvider>
+		</BrowserRouter>
+	</Provider>
 );

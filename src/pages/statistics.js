@@ -9,6 +9,7 @@ function Statistics() {
 		<Grid container justifyContent="center" width="95%" height="85%">
 			<ListRecord />
 			<Grid
+				item
 				container
 				direction="column"
 				justifyContent={{
