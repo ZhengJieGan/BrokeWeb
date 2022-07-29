@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { deleteExpenses } from "../../actions/expenses";
 import ColorContext from "../../base/colorContext";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
@@ -12,6 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 function SingleRecord(props) {
   const [face, setFace] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     switch (props.face) {
@@ -62,7 +65,16 @@ function SingleRecord(props) {
         mb: "5%",
       }}
     >
-      {face}
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        width="20%"
+      >
+        {face}
+      </Box>
+
       <Box
         display="flex"
         flexDirection="column"
@@ -108,12 +120,19 @@ function SingleRecord(props) {
       <Box
         display="flex"
         flexDirection="row"
-        justifyContent="flex-end"
+        justifyContent="space-between"
         alignItems="flex-end"
+        width={{ xs: "25%", sm: "20%", md: "15%", lg: "10%" }}
         sx={{ borderRadius: "20px" }}
       >
-        <EditIcon sx={{ color: color.mainColor }} />
-        <DeleteIcon sx={{ color: color.mainColor }} />
+        <EditIcon
+          sx={{ color: color.mainColor }}
+          onClick={() => console.log("edit")}
+        />
+        <DeleteIcon
+          sx={{ color: color.mainColor }}
+          onClick={() => dispatch(deleteExpenses(props.id))}
+        />
       </Box>
     </Box>
   );

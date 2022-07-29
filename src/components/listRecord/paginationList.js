@@ -44,8 +44,9 @@ export default function PaginationList() {
             return (
               <SingleRecord
                 key={v._id}
+                id={v._id}
                 title={v.category}
-                price={v.price}
+                price={parseFloat(v.price).toFixed(2)}
                 face={v.happiness}
                 remarks={v.remarks}
               />
