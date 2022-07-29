@@ -8,38 +8,38 @@ import Select from "@mui/material/Select";
 const menuItem = ["Food", "Travel", "Electronics"];
 
 export default function DropDown(props) {
-	const [categories, setCategories] = React.useState("");
+  const { categoryHandler } = props;
+  const [categories, setCategories] = React.useState("");
 
-	const handleChange = (event) => {
-		setCategories(event.target.value);
-	};
+  const handleChange = (event) => {
+    setCategories(event.target.value);
+    categoryHandler(event.target.value);
+    // console.log(event.target.value);
+  };
 
-	props.categoryHandler(categories);
+  //   categoryHandler(categories);
+  //   console.log(categories);
 
-	props.categoryHandler(categories);
-
-	return (
-		<Box width="100%">
-			<FormControl fullWidth>
-				<InputLabel id="demo-simple-select-label">
-					Categories
-				</InputLabel>
-				<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
-					value={categories}
-					label="Categories"
-					onChange={handleChange}
-				>
-					{menuItem.map((item) => {
-						return (
-							<MenuItem key={item} value={item}>
-								{item}
-							</MenuItem>
-						);
-					})}
-				</Select>
-			</FormControl>
-		</Box>
-	);
+  return (
+    <Box width="100%">
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={categories}
+          label="Categories"
+          onChange={handleChange}
+        >
+          {menuItem.map((item) => {
+            return (
+              <MenuItem key={item} value={item}>
+                {item}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+    </Box>
+  );
 }
