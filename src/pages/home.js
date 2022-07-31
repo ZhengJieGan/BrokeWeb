@@ -6,7 +6,7 @@ import DailySpent from "../components/dailySpent/dailySpent";
 function Home() {
 	return (
 		<Grid container width="95%" height="85%">
-			<AddRecord />
+			<AddRecord types="create"/>
 			<DailySpent />
 		</Grid>
 	);

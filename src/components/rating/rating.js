@@ -79,7 +79,7 @@ IconContainer.propTypes = {
 export default function RadioGroupRating(props) {
 	return (
 		<StyledRating
-			onClick={(value) => props.ratingHandler(value.target.id)}
+			onChange={(value) => props.ratingHandler(value.target.value)}
 			name="highlight-selected-only"
 			defaultValue={3}
 			IconContainerComponent={IconContainer}

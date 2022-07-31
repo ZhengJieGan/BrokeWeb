@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import ColorContext from "../../base/colorContext";
+import { useSelector } from "react-redux";
 
 function Summary() {
 	const color = useContext(ColorContext);
-
-	const dataMock = [];
+	const data = useSelector((state) => state.reducer);
+	const total = useSelector((state) => state.reducerTotal);
 
 	return (
 		<Box
@@ -22,7 +23,7 @@ function Summary() {
 				height: "38%",
 			}}
 		>
-			{dataMock.length > 0 ? (
+			{data.length > 0 ? (
 				<Box
 					width="100%"
 					height="100%"
@@ -38,7 +39,7 @@ function Summary() {
 						alignItems="center"
 					>
 						<Typography variant="body">
-							Your total spending{" "}
+							Your total spending
 						</Typography>
 						<Typography
 							variant="body"
@@ -56,7 +57,7 @@ function Summary() {
 								lg: "35px",
 							}}
 						>
-							RM 500
+							RM {total}
 						</Typography>
 					</Box>
 
