@@ -74,12 +74,10 @@ function SingleRecord(props) {
 			justifyContent="space-evenly"
 			alignItems="center"
 			sx={{
-				backgroundColor: color.background,
 				width: "90%",
 				height: "10%",
-				borderRadius: "20px",
 				p: "2%",
-				mb: "5%",
+				mb: "2%",
 			}}
 		>
 			<Box
