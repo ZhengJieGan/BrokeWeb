@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
 	Typography,
 	Box,
@@ -9,22 +9,30 @@ import {
 	ButtonBase,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
 import AuthenticationLayout from "../layouts/authentications";
 import ColorContext from "../base/colorContext";
+import { signUp } from "../actions/auth";
 
 const theme = createTheme();
 
 function SignUp() {
+	const dispatch = useDispatch();
+	const history = useNavigate();
+
+	const [userData, setUserData] = useState({
+		name: "",
+		email: "",
+		password: "",
+	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-			confirmpassword: data.get("confirmpassword"),
-		});
+		console.log(userData);
+
+		dispatch(signUp(userData, history));
 	};
 
 	const color = useContext(ColorContext);
@@ -93,12 +101,33 @@ function SignUp() {
 						>
 							<TextField
 								margin="normal"
+								fullWidth
+								required
+								id="name"
+								label="Name"
+								name="name"
+								autoComplete="name"
+								onChange={(e) => {
+									setUserData({
+										...userData,
+										name: e.target.value,
+									});
+								}}
+							/>
+							<TextField
+								margin="normal"
 								required
 								fullWidth
 								id="email"
 								label="Email Address"
 								name="email"
 								autoComplete="email"
+								onChange={(e) => {
+									setUserData({
+										...userData,
+										email: e.target.value,
+									});
+								}}
 							/>
 							<TextField
 								margin="normal"
@@ -109,16 +138,12 @@ function SignUp() {
 								type="password"
 								id="password"
 								autoComplete="current-password"
-							/>
-							<TextField
-								margin="normal"
-								required
-								fullWidth
-								name="confirmpassword"
-								label="Confirm Password"
-								type="password"
-								id="confirmpassword"
-								autoComplete="current-password"
+								onChange={(e) => {
+									setUserData({
+										...userData,
+										password: e.target.value,
+									});
+								}}
 							/>
 
 							<motion.div
@@ -129,8 +154,8 @@ function SignUp() {
 							>
 								<Button
 									type="submit"
-									component={Link}
-									to="/user/dashboard"
+									// component={Link}
+									// to="/user/dashboard"
 									fullWidth
 									variant="contained"
 									sx={{

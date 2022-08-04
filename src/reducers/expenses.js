@@ -26,4 +26,22 @@ const reducerTotal = (total = 0, action) => {
 	}
 };
 
-export { reducer, reducerTotal };
+const reducerToday = (today = 0, action) => {
+	switch (action.type) {
+		case "FETCH_TODAY":
+			return action.payload;
+		default:
+			return today;
+	}
+};
+
+const reducerCategory = (category = [], action) => {
+	switch (action.type) {
+		case "FETCH_CATEGORY":
+			return action.payload;
+		default:
+			return category;
+	}
+};
+
+export { reducer, reducerTotal, reducerToday, reducerCategory };

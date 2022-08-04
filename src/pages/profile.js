@@ -3,9 +3,22 @@ import { Grid, Box, Avatar, Typography, Button } from "@mui/material";
 import ColorContext from "../base/colorContext";
 import PersonIcon from "@mui/icons-material/Person";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
 	const color = useContext(ColorContext);
+	const dispatch = useDispatch();
+	const history = useNavigate();
+
+	const userData = JSON.parse(localStorage.getItem("profile"));
+	console.log(userData);
+
+	const logout = () => {
+		dispatch({ type: "LOGOUT" });
+		history("../../log-in", { replace: true });
+	};
+
 	return (
 		<Grid container justifyContent="center" width="95%" height="85%">
 			<Grid
@@ -37,19 +50,30 @@ function Profile() {
 						height: { xs: "90%", sm: "80%", md: "80%", lg: "80%" },
 					}}
 				>
-					<Avatar
-						sx={{
-							bgcolor: color.mainColor,
-							width: 100,
-							height: 100,
-						}}
-					>
-						<Box mt="10%">
-							<Typography fontSize="50px">
-								<PersonIcon fontSize="inherit" />
-							</Typography>
-						</Box>
-					</Avatar>
+					{userData ? (
+						<Avatar
+							sx={{
+								bgcolor: color.mainColor,
+								width: 100,
+								height: 100,
+							}}
+							src={userData["picture"]}
+						/>
+					) : (
+						<Avatar
+							sx={{
+								bgcolor: color.mainColor,
+								width: 100,
+								height: 100,
+							}}
+						>
+							<Box mt="10%">
+								<Typography fontSize="50px">
+									<PersonIcon fontSize="inherit" />
+								</Typography>
+							</Box>
+						</Avatar>
+					)}
 
 					<Box
 						width="80%"
@@ -58,14 +82,16 @@ function Profile() {
 						flexDirection="column"
 						justifyContent="space-evenly"
 					>
-						<Typography variant="body">Name: user</Typography>
-
 						<Typography variant="body">
-							Email: user@gmail.com
+							Name: {userData.result.name}
 						</Typography>
 
 						<Typography variant="body">
-							User Since: xx - xx - xxxx
+							Email: {userData.result.email}
+						</Typography>
+
+						<Typography variant="body">
+							User Since: {userData.result.createdAt.split('T')[0]}
 						</Typography>
 					</Box>
 					<Box
@@ -84,6 +110,7 @@ function Profile() {
 							<Button
 								variant="contained"
 								fullWidth
+								onClick={logout}
 								size="large"
 								sx={{
 									borderRadius: "30px",

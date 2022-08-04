@@ -39,7 +39,7 @@ function NotFound() {
         >
           <Button
             component={Link}
-            to="/home"
+            to="/"
             variant="contained"
             sx={{
               borderRadius: "30px",

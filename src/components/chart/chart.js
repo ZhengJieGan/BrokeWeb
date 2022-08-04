@@ -4,6 +4,7 @@ import ColorContext from "../../base/colorContext";
 import { PieChart } from "react-minimal-pie-chart";
 import { motion } from "framer-motion";
 import ChartViz from "../../assets/chart.svg";
+import { useSelector } from "react-redux";
 
 const defaultLabelStyle = {
 	fontSize: "5px",
@@ -12,8 +13,8 @@ const defaultLabelStyle = {
 
 function Chart() {
 	const color = useContext(ColorContext);
-
-	const dataMock = [];
+	const data = useSelector((state) => state.reducerCategory);
+	console.log(data);
 
 	return (
 		<Box
@@ -30,7 +31,7 @@ function Chart() {
 				height: "58%",
 			}}
 		>
-			{dataMock.length > 0 ? (
+			{data.length > 0 ? (
 				<Box
 					width="100%"
 					height="100%"
@@ -65,10 +66,10 @@ function Chart() {
 						}}
 					>
 						<PieChart
-							data={dataMock}
+							data={data}
 							label={({ dataEntry }) =>
 								`${dataEntry.title} = ${Math.round(
-									(dataEntry.value / 45) * 100
+									dataEntry.value
 								)}%`
 							}
 							labelStyle={{

@@ -1,4 +1,16 @@
 import { combineReducers } from "redux";
-import { reducer, reducerTotal } from "./expenses";
+import {
+	reducer,
+	reducerTotal,
+	reducerToday,
+	reducerCategory,
+} from "./expenses";
+import authReducer from "./auth";
 
-export default combineReducers({ reducer, reducerTotal });
+export default combineReducers({
+	reducer,
+	reducerTotal,
+	reducerToday,
+	reducerCategory,
+	authReducer 
+});

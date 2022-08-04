@@ -11,11 +11,14 @@ function AddRecord(props) {
 	const color = useContext(ColorContext);
 	const dispatch = useDispatch();
 
+	const userData = JSON.parse(localStorage.getItem("profile"));
+
 	const [expensesData, setExpensesData] = useState({
 		price: 0,
 		remarks: "No comment",
 		category: "Others",
 		happiness: 3,
+		createdBy: userData.result._id,
 	});
 
 	const categoryHandler = (feedback) => {

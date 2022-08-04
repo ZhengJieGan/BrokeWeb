@@ -57,7 +57,7 @@ function Summary() {
 								lg: "35px",
 							}}
 						>
-							RM {total}
+							RM {parseFloat(total).toFixed(2)}
 						</Typography>
 					</Box>
 

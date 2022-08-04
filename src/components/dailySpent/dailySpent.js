@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Grid, Typography, Box } from "@mui/material";
+import { useSelector } from "react-redux";
 import ColorContext from "../../base/colorContext";
 import Background from "../../assets/tips.svg";
 
 function DailySpent() {
 	const color = useContext(ColorContext);
+	const data = useSelector((state) => state.reducerToday);
 
 	return (
 		<Grid
@@ -68,7 +70,7 @@ function DailySpent() {
 								lg: "35px",
 							}}
 						>
-							RM 500
+							RM {parseFloat(data).toFixed(2)}
 						</Typography>
 					</Box>
 					<Box

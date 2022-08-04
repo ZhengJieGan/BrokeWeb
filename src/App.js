@@ -8,17 +8,25 @@ import NotFound from "./pages/notFound";
 import Profile from "./pages/profile";
 import SignUp from "./pages/signUp";
 import Statistics from "./pages/statistics";
-import { useDispatch, useSelector } from "react-redux";
-import { getExpenses, getTotalExpenses } from "./actions/expenses";
+import { useDispatch } from "react-redux";
+import {
+	getExpenses,
+	getTotalExpenses,
+	getTodayExpenses,
+	getCategoryExpenses,
+} from "./actions/expenses";
 
 function App() {
-	const data = useSelector((state) => state.reducer);
+	// const data = useSelector((state) => state.reducer);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getExpenses());
 		dispatch(getTotalExpenses());
-	}, [dispatch, data]);
+		dispatch(getTodayExpenses());
+		dispatch(getCategoryExpenses());
+	}, [dispatch]);
 
 	return (
 		<div>

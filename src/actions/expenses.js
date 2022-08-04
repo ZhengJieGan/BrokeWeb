@@ -45,3 +45,21 @@ export const getTotalExpenses = () => async (dispatch) => {
 		console.log(error);
 	}
 };
+
+export const getTodayExpenses = () => async (dispatch) => {
+	try {
+		const today = await api.fetchTodayExpenses();
+		dispatch({ type: "FETCH_TODAY", payload: today.data });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const getCategoryExpenses = () => async (dispatch) => {
+	try {
+		const { data } = await api.fetchCategoryExpenses();
+		dispatch({ type: "FETCH_CATEGORY", payload: data });
+	} catch (error) {
+		console.log(error);
+	}
+};

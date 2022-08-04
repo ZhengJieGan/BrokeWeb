@@ -1,10 +1,15 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/expenses";
+const API = axios.create({ baseURL: "http://localhost:5000"})
 
-export const fetchExpenses = () => axios.get(url);
-export const createExpenses = (newExpenses) => axios.post(url, newExpenses);
+export const fetchExpenses = () => API.get("/expenses");
+export const createExpenses = (newExpenses) => API.post("/expenses", newExpenses);
 export const updateExpenses = (id, updatedExpenses) =>
-	axios.patch(`${url}/${id}`, updatedExpenses);
-export const deleteExpenses = (id) => axios.delete(`${url}/${id}`);
-export const fetchTotalExpenses = () => axios.get(`${url}/total`);
+	API.patch(`/expenses/${id}`, updatedExpenses);
+export const deleteExpenses = (id) => API.delete(`/expenses/${id}`);
+export const fetchTotalExpenses = () => API.get("/expenses/total");
+export const fetchTodayExpenses = () => API.get("/expenses/today");
+export const fetchCategoryExpenses = () => API.get("/expenses/category");
+
+export const signIn = (formData) => API.post("/user/signIn", formData)
+export const signUp = (formData) => API.post("/user/signUp", formData)
