@@ -1,15 +1,16 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000"})
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-export const fetchExpenses = () => API.get("/expenses");
-export const createExpenses = (newExpenses) => API.post("/expenses", newExpenses);
+export const fetchExpenses = (id) => API.get(`/expenses/${id}`);
+export const createExpenses = (newExpenses) =>
+	API.post("/expenses", newExpenses);
 export const updateExpenses = (id, updatedExpenses) =>
 	API.patch(`/expenses/${id}`, updatedExpenses);
 export const deleteExpenses = (id) => API.delete(`/expenses/${id}`);
-export const fetchTotalExpenses = () => API.get("/expenses/total");
-export const fetchTodayExpenses = () => API.get("/expenses/today");
-export const fetchCategoryExpenses = () => API.get("/expenses/category");
+export const fetchTotalExpenses = (id) => API.get(`/expenses/total/${id}`);
+export const fetchTodayExpenses = (id) => API.get(`/expenses/today/${id}`);
+export const fetchCategoryExpenses = (id) => API.get(`/expenses/category/${id}`);
 
-export const signIn = (formData) => API.post("/user/signIn", formData)
-export const signUp = (formData) => API.post("/user/signUp", formData)
+export const signIn = (formData) => API.post("/user/signIn", formData);
+export const signUp = (formData) => API.post("/user/signUp", formData);

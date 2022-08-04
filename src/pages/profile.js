@@ -12,7 +12,7 @@ function Profile() {
 	const history = useNavigate();
 
 	const userData = JSON.parse(localStorage.getItem("profile"));
-	console.log(userData);
+	// console.log(userData);
 
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
@@ -91,7 +91,8 @@ function Profile() {
 						</Typography>
 
 						<Typography variant="body">
-							User Since: {userData.result.createdAt.split('T')[0]}
+							User Since:{" "}
+							{userData.result.createdAt.split("T")[0]}
 						</Typography>
 					</Box>
 					<Box

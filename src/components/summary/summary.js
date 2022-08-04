@@ -8,6 +8,20 @@ function Summary() {
 	const color = useContext(ColorContext);
 	const data = useSelector((state) => state.reducer);
 	const total = useSelector((state) => state.reducerTotal);
+	const category = useSelector((state) => state.reducerCategory);
+
+	let text = "";
+	let highest = 0;
+
+	for (let i = 0; i < category.length; i++) {
+		if (category[i].value > highest) {
+			highest = category[i].value;
+			text = category[i].title;
+		}
+	}
+
+	// console.log(text);
+	// console.log(highest);
 
 	return (
 		<Box
@@ -86,7 +100,7 @@ function Summary() {
 								lg: "35px",
 							}}
 						>
-							Travel
+							{text}
 						</Typography>
 					</Box>
 				</Box>

@@ -8,7 +8,7 @@ import NotFound from "./pages/notFound";
 import Profile from "./pages/profile";
 import SignUp from "./pages/signUp";
 import Statistics from "./pages/statistics";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	getExpenses,
 	getTotalExpenses,
@@ -17,16 +17,16 @@ import {
 } from "./actions/expenses";
 
 function App() {
-	// const data = useSelector((state) => state.reducer);
-
+	const data = useSelector((state) => state.reducer);
+	const userData = JSON.parse(localStorage.getItem("profile"));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getExpenses());
-		dispatch(getTotalExpenses());
-		dispatch(getTodayExpenses());
-		dispatch(getCategoryExpenses());
-	}, [dispatch]);
+		dispatch(getExpenses(userData ? userData.result._id : null));
+		dispatch(getTotalExpenses(userData ? userData.result._id : null));
+		dispatch(getTodayExpenses(userData ? userData.result._id : null));
+		dispatch(getCategoryExpenses(userData ? userData.result._id : null));
+	}, [dispatch, userData, data]);
 
 	return (
 		<div>

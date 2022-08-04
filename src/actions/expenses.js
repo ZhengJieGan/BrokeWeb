@@ -1,8 +1,8 @@
 import * as api from "../api";
 
-export const getExpenses = () => async (dispatch) => {
+export const getExpenses = (id) => async (dispatch) => {
 	try {
-		const { data } = await api.fetchExpenses();
+		const { data } = await api.fetchExpenses(id);
 		dispatch({ type: "FETCH_ALL", payload: data });
 	} catch (error) {
 		console.log(error);
@@ -37,27 +37,27 @@ export const deleteExpenses = (id) => async (dispatch) => {
 	}
 };
 
-export const getTotalExpenses = () => async (dispatch) => {
+export const getTotalExpenses = (id) => async (dispatch) => {
 	try {
-		const total = await api.fetchTotalExpenses();
+		const total = await api.fetchTotalExpenses(id);
 		dispatch({ type: "FETCH_TOTAL", payload: total.data });
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-export const getTodayExpenses = () => async (dispatch) => {
+export const getTodayExpenses = (id) => async (dispatch) => {
 	try {
-		const today = await api.fetchTodayExpenses();
+		const today = await api.fetchTodayExpenses(id);
 		dispatch({ type: "FETCH_TODAY", payload: today.data });
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-export const getCategoryExpenses = () => async (dispatch) => {
+export const getCategoryExpenses = (id) => async (dispatch) => {
 	try {
-		const { data } = await api.fetchCategoryExpenses();
+		const { data } = await api.fetchCategoryExpenses(id);
 		dispatch({ type: "FETCH_CATEGORY", payload: data });
 	} catch (error) {
 		console.log(error);
