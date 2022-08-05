@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://brokecore.herokuapp.com/" });
 
 export const fetchExpenses = (id) => API.get(`/expenses/${id}`);
 export const createExpenses = (newExpenses) =>
