@@ -15,9 +15,14 @@ import {
 	getTodayExpenses,
 	getCategoryExpenses,
 } from "./actions/expenses";
+import LoggedIn from "./components/auth/loggedIn";
+import RequiredAuth from "./components/auth/requiredAuth";
 
 function App() {
-	const data = useSelector((state) => state.reducer);
+	const data = useSelector((state) => state);
+
+	// console.log(data);
+
 	const userData = JSON.parse(localStorage.getItem("profile"));
 	const dispatch = useDispatch();
 
@@ -32,11 +37,32 @@ function App() {
 		<div>
 			<Routes>
 				<Route path="/" element={<Landing />} />
-				<Route path="/sign-up" element={<SignUp />} />
-				<Route path="/log-in" element={<LogIn />} />
+				<Route
+					path="/sign-up"
+					element={
+						<LoggedIn>
+							<SignUp />
+						</LoggedIn>
+					}
+				/>
+				<Route
+					path="/log-in"
+					element={
+						<LoggedIn>
+							<LogIn />
+						</LoggedIn>
+					}
+				/>
 				<Route path="/home" element={<Home />} />
 
-				<Route path="/user" element={<Dashboard />}>
+				<Route
+					path="/user"
+					element={
+						<RequiredAuth>
+							<Dashboard />
+						</RequiredAuth>
+					}
+				>
 					<Route path="dashboard" element={<Home />} />
 					<Route path="Statistics" element={<Statistics />} />
 					<Route path="profile" element={<Profile />} />

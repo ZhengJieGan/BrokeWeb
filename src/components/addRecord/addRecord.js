@@ -14,7 +14,7 @@ function AddRecord(props) {
 	const userData = JSON.parse(localStorage.getItem("profile"));
 
 	const [expensesData, setExpensesData] = useState({
-		price: 0,
+		price: "",
 		remarks: "No comment",
 		category: "Others",
 		happiness: 3,
@@ -34,6 +34,14 @@ function AddRecord(props) {
 
 		if (props.types === "create") {
 			dispatch(createExpenses(expensesData));
+			event.target.reset();
+			// setExpensesData({
+			// 	...expensesData,
+			// 	price: "",
+			// 	remarks: "",
+			// 	category: "",
+			// 	happiness: 3,
+			// });
 		} else if (props.types === "update") {
 			dispatch(updateExpenses(props.id, expensesData));
 			props.closeHandler();
@@ -154,9 +162,6 @@ function AddRecord(props) {
 						id="price"
 						name="price"
 						type="number"
-						inputProps={{
-							step: "0.01",
-						}}
 						required
 						onChange={(e) => {
 							setExpensesData({
@@ -182,6 +187,7 @@ function AddRecord(props) {
 						label="Remark"
 						id="remark"
 						name="remark"
+						// value={expensesData.remarks}
 						onChange={(e) =>
 							setExpensesData({
 								...expensesData,

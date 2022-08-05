@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { deleteAccount } from "../actions/auth";
 
 function Profile() {
 	const color = useContext(ColorContext);
@@ -17,6 +18,13 @@ function Profile() {
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
 		history("../../log-in", { replace: true });
+	};
+
+	const deleteUser = () => {
+		dispatch(deleteAccount(userData.result._id));
+		dispatch({ type: "DELETE_USER" });
+
+		history("/", { replace: true });
 	};
 
 	return (
@@ -133,6 +141,7 @@ function Profile() {
 						>
 							<Button
 								variant="contained"
+								onClick={deleteUser}
 								fullWidth
 								size="large"
 								color="error"

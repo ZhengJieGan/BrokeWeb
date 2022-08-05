@@ -77,7 +77,7 @@ function SingleRecord(props) {
 				width: "90%",
 				height: "10%",
 				p: "2%",
-				mb: "2%",
+				mb: { xs: "6%", sm: "5%", md: "5%", ld: "3%" },
 			}}
 		>
 			<Box
@@ -129,6 +129,17 @@ function SingleRecord(props) {
 					}}
 				>
 					Remarks : {props.remarks}
+				</Typography>
+				<Typography
+					variant="body"
+					fontSize={{
+						xs: "12px",
+						sm: "15px",
+						md: "15px",
+						lg: "15px",
+					}}
+				>
+					Date : {props.date}
 				</Typography>
 			</Box>
 

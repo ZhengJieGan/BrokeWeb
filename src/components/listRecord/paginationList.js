@@ -10,7 +10,7 @@ export default function PaginationList() {
 	const data = useSelector((state) => state.reducer);
 
 	let [page, setPage] = useState(1);
-	const PER_PAGE = 5;
+	const PER_PAGE = 4;
 
 	const count = Math.ceil(data.length / PER_PAGE);
 	const _DATA = usePagination(data, PER_PAGE);
@@ -48,14 +48,15 @@ export default function PaginationList() {
 								justifyContent="center"
 								alignItems="center"
 								width="100%"
+								key={v._id}
 							>
 								<SingleRecord
-									key={v._id}
 									id={v._id}
 									title={v.category}
 									price={parseFloat(v.price).toFixed(2)}
 									face={v.happiness}
 									remarks={v.remarks}
+									date={v.createdAt.split("T")[0]}
 								/>
 								<Divider sx={{ width: "90%" }} />
 							</Box>

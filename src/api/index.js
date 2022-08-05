@@ -10,7 +10,9 @@ export const updateExpenses = (id, updatedExpenses) =>
 export const deleteExpenses = (id) => API.delete(`/expenses/${id}`);
 export const fetchTotalExpenses = (id) => API.get(`/expenses/total/${id}`);
 export const fetchTodayExpenses = (id) => API.get(`/expenses/today/${id}`);
-export const fetchCategoryExpenses = (id) => API.get(`/expenses/category/${id}`);
+export const fetchCategoryExpenses = (id) =>
+	API.get(`/expenses/category/${id}`);
 
 export const signIn = (formData) => API.post("/user/signIn", formData);
 export const signUp = (formData) => API.post("/user/signUp", formData);
+export const deleteUser = (id) => API.delete(`/user/deleteAccount/${id}`);

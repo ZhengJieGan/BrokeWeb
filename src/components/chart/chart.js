@@ -14,7 +14,6 @@ const defaultLabelStyle = {
 function Chart() {
 	const color = useContext(ColorContext);
 	const data = useSelector((state) => state.reducerCategory);
-	console.log(data);
 
 	return (
 		<Box

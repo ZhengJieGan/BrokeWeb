@@ -22,3 +22,12 @@ export const signIn = (formData, history) => async (dispatch) => {
 		console.log(error);
 	}
 };
+
+export const deleteAccount = (id) => async (dispatch) => {
+	try {
+		await api.deleteUser(id);
+		dispatch({ type: "DELETE_USER", payload: id });
+	} catch (error) {
+		console.log(error);
+	}
+};

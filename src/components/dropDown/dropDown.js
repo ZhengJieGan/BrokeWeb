@@ -20,6 +20,10 @@ export default function DropDown(props) {
 	//   categoryHandler(categories);
 	//   console.log(categories);
 
+	const clear = (event) => {
+		event.target.reset();
+	};
+
 	return (
 		<Box width="100%">
 			<FormControl fullWidth>
@@ -32,6 +36,7 @@ export default function DropDown(props) {
 					value={categories}
 					label="Categories"
 					onChange={handleChange}
+					onSubmit={clear}
 				>
 					{menuItem.map((item) => {
 						return (
