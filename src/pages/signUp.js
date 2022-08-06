@@ -15,6 +15,8 @@ import { useDispatch } from "react-redux";
 import AuthenticationLayout from "../layouts/authentications";
 import ColorContext from "../base/colorContext";
 import { signUp } from "../actions/auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme();
 
@@ -41,6 +43,7 @@ function SignUp() {
 		<AuthenticationLayout type="signup">
 			<ThemeProvider theme={theme}>
 				<Container component="main" maxWidth="xs">
+					<ToastContainer />
 					<CssBaseline />
 					<Box
 						display="flex"

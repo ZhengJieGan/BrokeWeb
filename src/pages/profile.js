@@ -1,5 +1,13 @@
 import React, { useContext } from "react";
-import { Grid, Box, Avatar, Typography, Button } from "@mui/material";
+import {
+	Grid,
+	Box,
+	Avatar,
+	Typography,
+	Button,
+	Modal,
+	ButtonBase,
+} from "@mui/material";
 import ColorContext from "../base/colorContext";
 import PersonIcon from "@mui/icons-material/Person";
 import { motion } from "framer-motion";
@@ -12,6 +20,10 @@ function Profile() {
 	const dispatch = useDispatch();
 	const history = useNavigate();
 
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
+
 	const userData = JSON.parse(localStorage.getItem("profile"));
 	// console.log(userData);
 
@@ -23,7 +35,7 @@ function Profile() {
 	const deleteUser = () => {
 		dispatch(deleteAccount(userData.result._id));
 		dispatch({ type: "DELETE_USER" });
-
+		handleClose();
 		history("/", { replace: true });
 	};
 
@@ -141,7 +153,7 @@ function Profile() {
 						>
 							<Button
 								variant="contained"
-								onClick={deleteUser}
+								onClick={handleOpen}
 								fullWidth
 								size="large"
 								color="error"
@@ -155,6 +167,113 @@ function Profile() {
 					</Box>
 				</Box>
 			</Grid>
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box
+					display="flex"
+					justifyContent="center"
+					alignItems="center"
+					sx={{
+						width: { xs: "90%", sm: "80%", md: "40", lg: "30%" },
+						height: { xs: "20%", sm: "20%", md: "20", lg: "20%" },
+						position: "absolute",
+						top: "50%",
+						left: "50%",
+						transform: "translate(-50%, -50%)",
+					}}
+				>
+					<Box
+						display="flex"
+						flexDirection="column"
+						justifyContent="space-between"
+						sx={{
+							textAlign: "center",
+							backgroundColor: "#ffffff",
+							borderRadius: "10px",
+							height: "80%",
+							width: "90%",
+						}}
+					>
+						<Box
+							display="flex"
+							justifyContent="center"
+							alignItems="center"
+							height="100%"
+						>
+							<Typography variant="h6">
+								Are you sure you want to delete your account?
+								This action is not reversible!
+							</Typography>
+						</Box>
+						<Box
+							display="flex"
+							flexDirection="row"
+							justifyContent="center"
+							width="100%"
+							height="30%"
+						>
+							<ButtonBase
+								onClick={deleteUser}
+								sx={{
+									width: "50%",
+									height: "100%",
+									borderBottomLeftRadius: "10px",
+									backgroundColor: "#ffffff",
+									"&:hover": {
+										backgroundColor: "#EF7A7A",
+									},
+									border: 1,
+									borderColor: "#EDEDEC",
+								}}
+							>
+								<Box
+									display="flex"
+									justifyContent="center"
+									alignItems="center"
+									sx={{
+										width: "100%",
+										height: "100%",
+										borderBottomLeftRadius: "10px",
+									}}
+								>
+									<Typography>Yes</Typography>
+								</Box>
+							</ButtonBase>
+							<ButtonBase
+								onClick={handleClose}
+								sx={{
+									width: "50%",
+									height: "100%",
+									borderBottomRightRadius: "10px",
+									backgroundColor: "#ffffff",
+									"&:hover": {
+										backgroundColor: "#7AEF7E",
+									},
+									border: 1,
+									borderColor: "#EDEDEC",
+								}}
+							>
+								<Box
+									display="flex"
+									justifyContent="center"
+									alignItems="center"
+									sx={{
+										borderBottomRightRadius: "10px",
+										width: "100%",
+										height: "100%",
+									}}
+								>
+									<Typography>No</Typography>
+								</Box>
+							</ButtonBase>
+						</Box>
+					</Box>
+				</Box>
+			</Modal>
 		</Grid>
 	);
 }

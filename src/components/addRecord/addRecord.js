@@ -6,10 +6,22 @@ import ColorContext from "../../base/colorContext";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { createExpenses, updateExpenses } from "../../actions/expenses";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddRecord(props) {
 	const color = useContext(ColorContext);
 	const dispatch = useDispatch();
+	// const notify = () =>
+	// 	toast.success("🦄 Wow so easy!", {
+	// 		position: "top-center",
+	// 		autoClose: 5000,
+	// 		hideProgressBar: false,
+	// 		closeOnClick: true,
+	// 		pauseOnHover: true,
+	// 		draggable: true,
+	// 		progress: undefined,
+	// 	});
 
 	const userData = JSON.parse(localStorage.getItem("profile"));
 
@@ -35,13 +47,6 @@ function AddRecord(props) {
 		if (props.types === "create") {
 			dispatch(createExpenses(expensesData));
 			event.target.reset();
-			// setExpensesData({
-			// 	...expensesData,
-			// 	price: "",
-			// 	remarks: "",
-			// 	category: "",
-			// 	happiness: 3,
-			// });
 		} else if (props.types === "update") {
 			dispatch(updateExpenses(props.id, expensesData));
 			props.closeHandler();
@@ -65,6 +70,7 @@ function AddRecord(props) {
 			md={12}
 			lg={props.types === "create" ? 6 : 12}
 		>
+			<ToastContainer />
 			<Box
 				display="flex"
 				flexDirection="column"

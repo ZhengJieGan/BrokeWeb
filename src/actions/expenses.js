@@ -1,4 +1,39 @@
 import * as api from "../api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notifySuccess = () =>
+	toast.success("Record created successfully", {
+		position: "top-center",
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
+
+const notifyUpdate = () =>
+	toast.success("Record updated successfully", {
+		position: "top-center",
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
+
+const notifyDelete = () =>
+	toast.info("Record deleted successfully", {
+		position: "top-center",
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
 
 export const getExpenses = (id) => async (dispatch) => {
 	try {
@@ -13,6 +48,7 @@ export const createExpenses = (expense) => async (dispatch) => {
 	try {
 		const { data } = await api.createExpenses(expense);
 		dispatch({ type: "CREATE", payload: data });
+		notifySuccess();
 	} catch (error) {
 		console.log(error);
 	}
@@ -21,8 +57,8 @@ export const createExpenses = (expense) => async (dispatch) => {
 export const updateExpenses = (id, expense) => async (dispatch) => {
 	try {
 		const { data } = await api.updateExpenses(id, expense);
-
 		dispatch({ type: "UPDATE", payload: data });
+		notifyUpdate();
 	} catch (error) {
 		console.log(error);
 	}
@@ -32,6 +68,7 @@ export const deleteExpenses = (id) => async (dispatch) => {
 	try {
 		await api.deleteExpenses(id);
 		dispatch({ type: "DELETE", payload: id });
+		notifyDelete();
 	} catch (error) {
 		console.log(error);
 	}

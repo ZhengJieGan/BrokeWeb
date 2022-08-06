@@ -19,18 +19,22 @@ import LoggedIn from "./components/auth/loggedIn";
 import RequiredAuth from "./components/auth/requiredAuth";
 
 function App() {
-	const data = useSelector((state) => state);
-
-	// console.log(data);
+	const data = useSelector((state) => state.reducer);
+	console.log("test");
 
 	const userData = JSON.parse(localStorage.getItem("profile"));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getExpenses(userData ? userData.result._id : null));
-		dispatch(getTotalExpenses(userData ? userData.result._id : null));
-		dispatch(getTodayExpenses(userData ? userData.result._id : null));
-		dispatch(getCategoryExpenses(userData ? userData.result._id : null));
+		const interval = setInterval(() => {
+			dispatch(getExpenses(userData ? userData.result._id : null));
+			dispatch(getTotalExpenses(userData ? userData.result._id : null));
+			dispatch(getTodayExpenses(userData ? userData.result._id : null));
+			dispatch(
+				getCategoryExpenses(userData ? userData.result._id : null)
+			);
+		}, 1000);
+		return () => clearInterval(interval);
 	}, [dispatch, userData, data]);
 
 	return (

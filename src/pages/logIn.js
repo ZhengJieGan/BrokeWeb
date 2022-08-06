@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AuthenticationLayout from "../layouts/authentications";
 import ColorContext from "../base/colorContext";
 import { signIn } from "../actions/auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme();
 
@@ -64,8 +66,9 @@ function LogIn() {
 	// }, []);
 
 	const handleSubmit = (event) => {
+		// notify();
 		event.preventDefault();
-		console.log(userData);
+		// console.log(userData);
 		dispatch(signIn(userData, history));
 	};
 
@@ -75,6 +78,8 @@ function LogIn() {
 		<AuthenticationLayout type="login">
 			<ThemeProvider theme={theme}>
 				<Container component="main" maxWidth="xs">
+					
+					<ToastContainer />
 					<CssBaseline />
 					<Box
 						display="flex"

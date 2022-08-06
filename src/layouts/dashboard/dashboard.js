@@ -16,6 +16,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Outlet } from "react-router-dom";
 import ColorContext from "../../base/colorContext";
 import { motion } from "framer-motion";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const drawerWidth = 250;
 
@@ -232,6 +234,7 @@ function Dashboard(props) {
 							pt: { xs: "10%", sm: "3%", md: "3%", lg: "3%" },
 						}}
 					>
+						<ToastContainer />
 						<Outlet />
 					</Grid>
 				</Box>
