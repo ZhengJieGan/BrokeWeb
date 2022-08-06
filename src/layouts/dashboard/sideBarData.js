@@ -1,18 +1,18 @@
 const SideBarData = [
   {
     title: "Dashboard",
-    link: "dashboard",
+    link: "/user/dashboard",
     key: 1,
   },
   {
     title: "Statistics",
-    link: "statistics",
+    link: "/user/statistics",
     key: 2,
   },
 
   {
     title: "Profile",
-    link: "profile",
+    link: "/user/profile",
     key: 3,
   },
 ];

@@ -1,7 +1,7 @@
 import React from "react";
 import SideBarData from "./sideBarData";
 import { ButtonBase, Toolbar, Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function SideBar() {
 	return (
@@ -13,8 +13,9 @@ function SideBar() {
 			<Toolbar />
 			{SideBarData.map((data) => (
 				<ButtonBase
-					component={Link}
-					to={data.link}
+					// component={Link}
+					// to={data.link}
+					onClick={() => (window.location.pathname = data.link)}
 					key={data.key}
 					sx={{
 						display: "flex",
