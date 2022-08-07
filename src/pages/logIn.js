@@ -109,7 +109,7 @@ function LogIn() {
 								lg: "black",
 							}}
 						>
-							Keep tracking your expenses to find out that you are
+							Keep tracking your expenses to find out why you are
 							always broke.
 						</Typography>
 					</Box>
