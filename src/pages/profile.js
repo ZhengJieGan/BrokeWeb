@@ -203,8 +203,9 @@ function Profile() {
 							justifyContent="center"
 							alignItems="center"
 							height="100%"
+							px="5%"
 						>
-							<Typography variant="h6">
+							<Typography variant="h6" fontSize={15}>
 								Are you sure you want to delete your account?
 								This action is not reversible!
 							</Typography>
@@ -214,7 +215,7 @@ function Profile() {
 							flexDirection="row"
 							justifyContent="center"
 							width="100%"
-							height="30%"
+							height="45%"
 						>
 							<ButtonBase
 								onClick={deleteUser}
@@ -224,7 +225,7 @@ function Profile() {
 									borderBottomLeftRadius: "10px",
 									backgroundColor: "#ffffff",
 									"&:hover": {
-										backgroundColor: "#EF7A7A",
+										backgroundColor: "red",
 									},
 									border: 1,
 									borderColor: "#EDEDEC",
@@ -243,16 +244,14 @@ function Profile() {
 									<Typography>Yes</Typography>
 								</Box>
 							</ButtonBase>
+
 							<ButtonBase
 								onClick={handleClose}
 								sx={{
 									width: "50%",
 									height: "100%",
 									borderBottomRightRadius: "10px",
-									backgroundColor: "#ffffff",
-									"&:hover": {
-										backgroundColor: "#7AEF7E",
-									},
+
 									border: 1,
 									borderColor: "#EDEDEC",
 								}}
