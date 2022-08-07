@@ -194,7 +194,7 @@ function Profile() {
 							textAlign: "center",
 							backgroundColor: "#ffffff",
 							borderRadius: "10px",
-							height: "80%",
+							height: "82%",
 							width: "90%",
 						}}
 					>
