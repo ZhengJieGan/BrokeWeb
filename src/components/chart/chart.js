@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const defaultLabelStyle = {
 	fontSize: "5px",
-	fontFamily: "Montserrat",
+	fontFamily: "Inter",
 };
 
 function Chart() {
@@ -67,9 +67,11 @@ function Chart() {
 						<PieChart
 							data={data}
 							label={({ dataEntry }) =>
-								`${dataEntry.title} = ${Math.round(
-									dataEntry.value
-								)}%`
+								Math.round(dataEntry.value) > 10
+									? `${dataEntry.title} = ${Math.round(
+											dataEntry.value
+									  )}%`
+									: null
 							}
 							labelStyle={{
 								...defaultLabelStyle,

@@ -168,6 +168,9 @@ function AddRecord(props) {
 						id="price"
 						name="price"
 						type="number"
+						inputProps={{
+							step: "0.01",
+						}}
 						required
 						onChange={(e) => {
 							setExpensesData({
