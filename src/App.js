@@ -20,7 +20,7 @@ import RequiredAuth from "./components/auth/requiredAuth";
 
 function App() {
 	const data = useSelector((state) => state.reducer);
-	console.log("test");
+	// console.log("test");
 
 	const userData = JSON.parse(localStorage.getItem("profile"));
 	const dispatch = useDispatch();
